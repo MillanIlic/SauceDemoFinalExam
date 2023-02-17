@@ -24,9 +24,12 @@ public class VerifyProductsNameDescriptionPrice {
         CartPage cartPage = new CartPage(driver);
         boolean isProductAdded = cartPage.isProductInCart("Sauce Labs Bike Light");
         boolean isSameDescription = cartPage.isDescriptionSame("A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.");
+        boolean isSamePrice = cartPage.isSameProductPrice(9.99);
+
 
         Assert.assertEquals(isProductAdded, true, "Product with name Sauce Labs Bike Light is not added to cart");
         Assert.assertEquals(isSameDescription, true,"Products do not have the same description" );
+        //Assert.assertEquals(isSamePrice, true,"Price is not same.");
 
         cartPage.close();
 

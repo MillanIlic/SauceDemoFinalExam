@@ -99,17 +99,6 @@ public class ProductsPage {
         }
     }
 
-    public void getProductDescription(String productDescription) {
-        WebElement container = driver.findElement(By.id("inventory_container"));
 
-        List<WebElement> listInventoryItems = container.findElements(By.xpath(".//div[@class='inventory_item']"));
-
-        for (int i = 0; i < listInventoryItems.size(); i++) {
-            WebElement itemDescription = listInventoryItems.get(i).findElement(By.xpath(".//div[@class='inventory_item_desc']"));
-            String itemDescriptionText = itemDescription.getText();
-
-
-        }
-    }
 }
 

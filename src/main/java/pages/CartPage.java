@@ -13,6 +13,14 @@ public class CartPage {
         this.driver = driver;
     }
 
+    public WebElement checkoutButton() {
+        return driver.findElement(By.name("checkout"));
+    }
+
+    public void clickCheckoutButton() {
+        driver.findElement(By.name("checkout")).click();
+    }
+
     public void openPage() {
 
     }
@@ -50,6 +58,26 @@ public class CartPage {
         }
         return toReturn;
     }
+
+    public boolean isSameProductPrice(Double productPrice) {
+        boolean toReturn = false;
+
+        WebElement cartList = driver.findElement(By.xpath(".//div[@class='cart_item']"));
+
+        List<WebElement> listInventoryItems = cartList.findElements(By.xpath(".//div[@class='inventory_item']"));
+
+        for (int i = 0; i < listInventoryItems.size(); i++) {
+            WebElement itemPrice = listInventoryItems.get(i).findElement(By.xpath(".//div[@class='inventory_item_price']"));
+             String itemPriceText = itemPrice.getText().substring(1);
+             Double itemPriceNumber = Double.parseDouble(itemPriceText);
+            if (itemPriceNumber.equals(productPrice)) {
+                toReturn = true;
+                break;
+            }
+        }
+        return toReturn;
+    }
+
 
 
 
