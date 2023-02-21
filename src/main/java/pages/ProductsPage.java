@@ -14,16 +14,6 @@ public class ProductsPage {
         this.driver = driver;
     }
 
-    public boolean isOpen() {
-        String url = driver.getCurrentUrl();
-
-        if (url.equals("https://www.saucedemo.com/inventory.html")) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
 
     public WebElement getCart() {
         return driver.findElement(By.xpath("//a[@class='shopping_cart_link']"));
@@ -39,21 +29,6 @@ public class ProductsPage {
         driver.quit();
     }
 
-    public void sortByValue(String sortValue) {
-        WebElement sortContainer = driver.findElement(By.xpath("//select[@data-test='product_sort_container']"));
-
-        sortContainer.click();
-
-        List<WebElement> options = sortContainer.findElements(By.xpath(".//option"));
-
-        for (int i = 0; i < options.size(); i++) {
-            String optionText = options.get(i).getText();
-            if (optionText.equals(sortValue)) {
-                options.get(i).click();
-                break;
-            }
-        }
-    }
 
     public void sortByAlphabet(String sortAlphabet) {
         WebElement sortContainer = driver.findElement(By.xpath("//select[@data-test='product_sort_container']"));

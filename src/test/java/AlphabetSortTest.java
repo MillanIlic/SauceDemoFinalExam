@@ -1,4 +1,5 @@
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.ProductsPage;
@@ -16,9 +17,11 @@ public class AlphabetSortTest {
         loginPage.clickLogin();
 
         ProductsPage productsPage = new ProductsPage(driver);
-        productsPage.sortByValue("Name (A to Z)");
+        productsPage.sortByAlphabet("Name (A to Z)");
         productsPage.printProductsName();
         productsPage.close();
+
+
     }
 
     @Test
@@ -33,7 +36,7 @@ public class AlphabetSortTest {
         loginPage.clickLogin();
 
         ProductsPage productsPage = new ProductsPage(driver);
-        productsPage.sortByValue("Name (Z to A)");
+        productsPage.sortByAlphabet("Name (Z to A)");
         productsPage.printProductsName();
 
         productsPage.close();
